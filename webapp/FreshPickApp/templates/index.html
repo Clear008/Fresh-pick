@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
-</head>
-<body>
-    <a href="/products">products</a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="flex gap-2">
+        {% for product in products %}
+        <div class="bg-gray-200 p-4 m-4 rounded w-fit">
+            <img src="{{ product.image }}" alt="" width="150">
+            <h1 class="text-2xl">{{ product.name }}</h1>
+            <p class="text-lg">{{ product.description }}</p>
+            <p class="text-lg">{{ product.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

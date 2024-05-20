@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <!-- edit here -->
+    
+    <!-- edit here -->
+    
+    
+    
+    
+    
+    
+    <form action="{% url 'signup' %}" method="post" class="bg-gray-200 p-6">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label><br>
+        <input type="text" name="first_name" id="first_name"><br>
+    
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" name="last_name" id="last_name"><br>
+    
+        <label for="birth_date">Birth Date:</label><br>
+        <input type="date" name="birth_date" id="birth_date"><br>
+    
+        <label for="phone_number">Phone Number:</label><br>
+        <input type="text" name="phone_number" id="phone_number"><br>
+    
+        <label for="shipping_address">Shipping Address:</label><br>
+        <input type="text" name="shipping_address" id="shipping_address"><br>
+    
+        <label for="username">Username:</label><br>
+        <input type="text" name="username" id="username"><br>
+    
+        <label for="email">Email:</label><br>
+        <input type="email" name="email" id="email"><br>
+    
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" id="password"><br>
+    
+        <input type="submit" value="Sign Up" class="cursor-pointer px-4 py-2 bg-green-500 mt-2 ms-2">
+    </form>
+{% endblock %}

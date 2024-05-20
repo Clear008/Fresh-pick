@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
-</head>
-<body>
-    <ul class="">
-        <li>Product 1</li>
-        <li>Product 3</li>
-        <li>Product 2</li>
-        <li>Product 4</li>
-        <li>Product 5</li>
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+    
+{% block content %}
+    {% for product in products %}
+    <div class="bg-gray-200 p-4 m-4 rounded w-fit">
+        <img src="{{ product.image }}" alt="" width="150">
+        <h1 class="text-2xl">{{ product.name }}</h1>
+        <p class="text-lg">{{ product.description }}</p>
+        <p class="text-lg">{{ product.price }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
