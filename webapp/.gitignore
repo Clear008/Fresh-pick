@@ -1,5 +1,5 @@
 venv/
 FreshPickProject/__pycache__/
 FreshPickApp/__pycache__/
-FreshPickApp/migrations/
+#FreshPickApp/migrations/
 db.sqlite3
