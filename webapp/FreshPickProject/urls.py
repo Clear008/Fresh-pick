@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-import FreshPickApp.views
+from FreshPickApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', FreshPickApp.views.index),
+    path('', views.index, name='index'),
+    path('products/', views.products, name='products'),
 ]
