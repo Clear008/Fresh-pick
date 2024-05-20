@@ -4,8 +4,7 @@ from django.utils import timezone
 
 # Create your models here.
 class User(AbstractUser):
-    email = models.EmailField(max_length=255)
-    password = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255, unique=True)
     phone_number = models.CharField(max_length=255)
     birth_date = models.DateField()
     shipping_address = models.TextField()
