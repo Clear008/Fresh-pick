@@ -33,10 +33,7 @@ def index(request):
 def products(request):
     if request.user.is_authenticated:
         products = Product.objects.all()
-        paginator = Paginator(products, 8)  # Adjust page size as needed
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        return render(request, 'products.html', {'products': page_obj, 'paginator': paginator})
+        return render(request, 'products.html', {'products': products})
     else:
         return redirect('login')
 
