@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Order History{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-b from-green-50 to-green-100">
+    <div class="container mx-auto py-10">
+        <h2 class="text-3xl text-[#333333] font-bold mb-4">Order History</h2>
+        <p class="mb-8 text-lg">Here are your past orders:</p>
+        {% if order_list %}
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200 text-lg">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-lg font-medium text-[#333333] uppercase tracking-wider">
+                                Order ID
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-lg font-medium text-[#333333] uppercase tracking-wider">
+                                Order Date
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-lg font-medium text-[#333333] uppercase tracking-wider">
+                                Payment Method
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-lg font-medium text-[#333333] uppercase tracking-wider">
+                                Items
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-lg font-medium text-[#333333] uppercase tracking-wider">
+                                Total Price
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        {% for order_data in order_list %}
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-lg text-[#333333]">
+                                    {{ order_data.order.id }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-lg text-[#333333]">
+                                    {{ order_data.order.order_date }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-lg text-[#333333]">
+                                    {{ order_data.order.payment_method }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-lg text-[#333333]">
+                                    <ul>
+                                        {% for item in order_data.items %}
+                                            <li>{{ item.product.name }} | {{ item.quantity }} x ${{ item.product.price }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-lg text-red-600">
+                                    ${{ order_data.total_price }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-gray-600">You have no past orders.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

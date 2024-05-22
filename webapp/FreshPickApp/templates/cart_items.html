@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Cart{% endblock %}
+{% block title %}Cart Items{% endblock %}
 
 {% block content %}
 <div class="flex justify-center items-center h-full py-12">
@@ -17,33 +17,60 @@
         <!-- Right Side - Cart Items List -->
         <div class="w-1/2 p-8">
             <h2 class="text-3xl font-bold mb-4 text-[#333333]">Cart Items</h2>
-            <p class="text-gray-600 mb-8">Your cart items are listed below.</p>
-            {% for cart_item in cart_items %}
-            <div class="flex items-center justify-between border-b border-gray-200 py-4">
-                <div class="flex items-center gap-4">
-                    <img src="{{ cart_item.product.image }}" alt="Product Image" class="w-16 h-16 object-cover rounded-lg">
+            {% if cart_items %}
+                <p class="text-gray-600 mb-8">Your cart items are listed below.</p>
+                {% for cart_item in cart_items %}
+                <div class="flex items-center justify-between border-b border-gray-200 py-4">
+                    <div class="flex items-center gap-4">
+                        <img src="{{ cart_item.product.image }}" alt="Product Image" class="w-16 h-16 object-cover rounded-lg">
+                        <div>
+                            <h1 class="text-xl font-semibold">
+                                {{ cart_item.product.name }} 
+                                <span class="text-gray-600 text-base italic">x{{ cart_item.quantity }} Kg</span>
+                            </h1>
+                            <p class="text-gray-600">${{ cart_item.product.price }}</p>
+                        </div>
+                    </div>
                     <div>
-                        <h1 class="text-xl font-semibold">
-                            {{ cart_item.product.name }} 
-                            <span class="text-gray-600 text-base italic">x{{ cart_item.quantity }} Kg</span>
-                        </h1>
-                        <p class="text-gray-600">${{ cart_item.product.price }}</p>
+                        <form action="{% url 'remove_from_cart' cart_item.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="text-red-600 font-semibold px-4 py-2 rounded-lg border border-red-600 hover:bg-red-600 hover:text-white transition-all duration-200">
+                                Remove
+                            </button>
+                        </form>
                     </div>
                 </div>
-                <div>
-                    <form action="{% url 'remove_from_cart' cart_item.id %}" method="POST">
+                {% endfor %}
+                <div class="mt-8 flex items-center justify-between w-full">
+                    
+                    <form action="{% url 'checkout' %}" method="POST" class="w-full">
                         {% csrf_token %}
-                        <button type="submit" class="text-red-600 font-semibold px-4 py2 rounded-lg border border-red-600 hover:bg-red-600 hover:text-white transition-all duration-200">
-                            Remove
-                        </button>
+                        <div class="flex justify-between items-end">
+                            <div class="flex flex-col">
+                                <label for="payment_method" class="block text-[#333333] text-lg font-semibold">Payment Method:</label>
+                                <select name="payment_method" id="payment_method" class="block w-full mt-1 py-2 px-2 rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50">
+                                    <option value="Credit Card">Credit Card</option>
+                                    <option value="PayPal">PayPal</option>
+                                    <option value="Bank Transfer">Bank Transfer</option>
+                                </select>
+                                <h2 class="text-2xl font-bold text-[#333333] mt-4">Total Price: ${{ total_price }}</h2>
+                            </div>
+                            <button type="submit" class="inline-flex items-center gap-1 bg-green-700 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700/[.8] focus:outline-none focus:ring-2 focus:ring-green-700/[.8] transition-all duration-200 mt-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hand-coins"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>
+                                Proceed To Checkout
+                            </button>
+                        </div>
                     </form>
                 </div>
-            </div>
-            {% endfor %}
-            
-            <div class="mt-8">
-                <h2 class="text-2xl font-bold mb-4 text-[#333333]">Total Price: ${{ total_price }}</h2>
-            </div>
+            {% else %}
+                <div class="flex flex-col justify-center items-center gap-4">
+                    <p class="text-gray-600 text-xl text-center mt-8">Your cart is currently empty. <br> Explore our products and add items to your cart.</p>
+                    <a href="/products" class="bg-[#3A8002] text-white px-4 py-2 rounded-lg w-fit inline-flex items-center gap-1 hover:bg-green-700/[.8] transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        Browse Products
+                    </a>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

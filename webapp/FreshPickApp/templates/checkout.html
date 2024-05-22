@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center h-full py-12">
+    <div class="max-w-6xl w-full bg-white shadow-lg rounded-lg flex">
+        <!-- Left Side - Checkout -->
+        <div class="w-1/2 bg-gray-200 relative flex flex-col items-center justify-center rounded-lg">
+            <img src="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                alt="Checkout" class="w-full h-full object-cover opacity-75 blur-[2px] rounded-lg">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <h2 class="text-6xl font-bold mb-8 text-[#333333] drop-shadow-lg">Proceed To Checkout</h2>
+            </div>
+        </div>
+        <!-- Right Side - Checkout Form -->
+        <div class="w-1/2 p-8">
+            <h2 class="text-3xl font-bold mb-4 text-[#333333]">Checkout</h2>
+            <p class="text-gray-600 mb-8">Please fill in your details below to proceed to checkout.</p>
+            <form action="{% url 'order' %}" method="POST">
+                {% csrf_token %}
+                <div class="flex flex-col gap-4">
+                    <input type="text" name="name" placeholder="Full Name" class="border border-gray-200 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 transition-all duration-200">
+                    <input type="email" name="email" placeholder="Email Address" class="border border-gray-200 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 transition-all duration-200">
+                    <input type="text" name="phone" placeholder="Phone Number" class="border border-gray-200 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 transition-all duration-200">
+                    <input type="text" name="address" placeholder="Delivery Address" class="border border-gray-200 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 transition-all duration-200">
+                    <button type="submit" class="bg-green-700 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700/[.8] focus:outline-none focus:ring-2 focus:ring-green-700/[.8] transition-all duraation-200">
+                        Place Order
+                    </button>
+                </div>
+            </form>
+            

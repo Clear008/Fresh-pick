@@ -146,3 +146,61 @@ def remove_from_cart(request, cart_item_id):
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 
+@login_required
+def checkout(request):
+    if request.method == 'POST':
+        try:
+            cart = Cart.objects.get(user=request.user)
+            cart_items = CartItem.objects.filter(cart=cart)
+            if not cart_items.exists():
+                messages.error(request, "Your cart is empty.")
+                return redirect('cart_items')
+
+            # Create Order
+            order = Order.objects.create(user=request.user, payment_method=request.POST.get('payment_method', 'Credit Card'))
+            
+            # Create Order Items from Cart Items
+            for item in cart_items:
+                OrderItem.objects.create(
+                    order=order,
+                    product=item.product,
+                    quantity=item.quantity
+                )
+                item.product.quantity_available -= item.quantity
+                item.product.save()
+            
+            # Clear the cart
+            cart_items.delete()
+            messages.success(request, "Order placed successfully!")
+            return redirect('order_summary', order_id=order.id)
+
+        except Exception as e:
+            messages.error(request, f"Error during checkout: {str(e)}")
+            return redirect('cart_items')
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+    
+@login_required
+def order_summary(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    order_items = OrderItem.objects.filter(order=order)
+    total_price = sum(item.product.price * item.quantity for item in order_items)
+    return render(request, 'order_summary.html', {'order': order, 'order_items': order_items, 'total_price': total_price})
+
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user).order_by('-order_date')
+    order_list = []
+
+    for order in orders:
+        order_items = OrderItem.objects.filter(order=order)
+        total_price = sum(item.quantity * item.product.price for item in order_items)
+        order_list.append({'order': order, 'items': order_items, 'total_price': total_price})
+
+    return render(request, 'order_history.html', {'order_list': order_list})
+    
+@login_required
+def profile(request):
+    user = request.user
+    return render(request, 'profile.html', {'user': user})
+    

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Order Summary{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-b from-green-50 to-green-100">
+    <div class="container mx-auto py-10 w-fit">
+        <h2 class="text-3xl text-[#333333] font-bold mb-4">Order Summary</h2>
+        <p class="mb-8">Thank you for your purchase! Here are your order details:</p>
+        <div class="bg-white shadow-lg overflow-hidden sm:rounded-lg w-fit">
+            <div class="border-t border-gray-200 w-fit">
+                <dl>
+                    <!-- <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-gray-500">Order ID</dt>
+                        <dd class="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">{{ order.id }}</dd>
+                    </div> -->
+                    {% for item in order_items %}
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-gray-500">{{ item.product.name }}</dt>
+                        <dd class="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">{{ item.quantity }} x ${{ item.product.price }}</dd>
+                    </div>
+                    {% endfor %}
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-t border-green-700/[.8]">
+                        <dt class="text-md font-medium text-gray-500">Order Date</dt>
+                        <dd class="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">{{ order.order_date }}</dd>
+                    </div>
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-md font-medium text-gray-500">Payment Method</dt>
+                        <dd class="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">{{ order.payment_method }}</dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:px-6 border-t border-green-700/[.8] w-full">
+                        <h3 class="text-lg font-semibold text-end w-full text-[#333333]">
+                            Total Price : 
+                            <span class="text-green-700">${{ total_price }}</span>
+                        </h3>
+                    </div>
+                </dl>
+                    
+            </div>
+        </div>
+        <div class="mx-auto py-4 w-fit mb-4">
+        
+            <a href="{% url 'order_history' %}" class="float-right mt-2 mx-auto text-white font-semibold inline-flex items-center gap-1 bg-green-700 px-4 py-2 rounded-lg shadow-lg hover:shadow-xl hover:bg-green-700/[.8] transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-right"><path d="M6 9h6V5l7 7-7 7v-4H6V9z"/></svg>
+                Continue
+            </a>
+        </div>
+        <!-- <div class="mt-8">
+            <h3 class="text-xl font-semibold mb-4">Items</h3>
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg w-fit">
+                <div class="border-t border-gray-200 w-fit">
+                    <dl>
+                        {% for item in order_items %}
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-md font-medium text-gray-500">{{ item.product.name }}</dt>
+                            <dd class="mt-1 text-md text-gray-900 sm:mt-0 sm:col-span-2">{{ item.quantity }} x ${{ item.product.price }}</dd>
+                        </div>
+                        {% endfor %}
+                    </dl>
+                </div>
+            </div>
+            <div class="mt-4">
+                <h3 class="text-xl font-semibold">Total Price: ${{ total_price }}</h3>
+            </div>
+        </div> -->
+    </div>
+    
+    
+</div>
+{% endblock %}
