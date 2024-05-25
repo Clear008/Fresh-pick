@@ -32,5 +32,6 @@ urlpatterns = [
     path('order-summary/<int:order_id>/', views.order_summary, name='order_summary'),
     path('order-history/', views.order_history, name='order_history'),
     path('profile/', views.profile, name='profile'),
-    
+    path('about/', views.about, name='about'),
+    path('shop/', views.shop, name='shop'),
 ]

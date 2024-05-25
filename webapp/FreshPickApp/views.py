@@ -204,3 +204,10 @@ def profile(request):
     user = request.user
     return render(request, 'profile.html', {'user': user})
     
+def about(request):
+    return render(request, 'aboutus.html')
+
+
+def shop(request):
+    return render(request, 'shop.html')
+    

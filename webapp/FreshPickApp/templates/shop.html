@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shop{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-b from-green-50 to-green-100">
+    <section class="py-10 sm:py-16 lg:py-24">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
+                <div>
+                    <h1 class="text-4xl font-bold text-[#333333] sm:text-6xl lg:text-7xl">
+                        Explore our <br />
+                        <div class="relative inline-flex">
+                            <span class="absolute inset-x-0 bottom-0 border-b-[30px] border-green-700/[.5]"></span>
+                            <h1 class="relative text-4xl font-bold text-[#333333] sm:text-6xl lg:text-7xl">Fresh Selection</h1>
+                        </div>
+                    </h1>
+                    <p class="mt-8 text-base text-[#333333] sm:text-xl">Discover a wide range of fresh, locally sourced products at FreshPick. From seasonal fruits and vegetables to artisanal cheeses and organic snacks, we have everything you need to create delicious meals and support local farmers.</p>
+                </div>
+                <div>
+                    <img class="w-full rounded-lg shadow-xl" src="https://plus.unsplash.com/premium_photo-1686529896385-8a8d581d0225?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Explore our Fresh Selection" />
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="bg-white">
+    <section class="py-10 sm:py-16 lg:py-24">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
+                <div>
+                    <img class="w-full rounded-lg shadow-xl" src="https://images.unsplash.com/photo-1600060958760-2e1c76035963?q=80&w=2026&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Seasonal Selections" />
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold text-[#333333] sm:text-6xl lg:text-7xl">Seasonal Selections</h2>
+                    <p class="mt-4 text-base text-gray-600 sm:text-xl">Explore our seasonal produce section and discover the freshest fruits and vegetables picked at the peak of ripeness. From juicy summer berries to crisp fall apples, our seasonal selections change regularly to offer you the best of what's in season.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="bg-green-50">
+    <section class="py-10 sm:py-16 lg:py-24">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
+                <div>
+                    <h2 class="text-4xl font-bold text-[#333333] sm:text-6xl lg:text-7xl">Specialty Items</h2>
+                    <p class="mt-4 text-base text-gray-600 sm:text-xl">Indulge in our selection of specialty items curated for food enthusiasts. From artisanal cheeses and gourmet charcuterie to imported olive oils and rare spices, we offer unique products that elevate your culinary experience.</p>
+                </div>
+                <div>
+                    <img class="w-full rounded-lg shadow-xl" src="https://images.unsplash.com/photo-1711469137626-75e20d3a10aa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Specialty Items" />
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
