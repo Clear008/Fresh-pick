@@ -4,9 +4,9 @@
 
   📬 mail here: [khalilelam16@gmail.com](mailto:khalilelam16@gmail.com)
 
-- **[El Amraoui Khalil](https://github.com/khalilelamraoui)**
+- **[EL Mouajjeh Soufiane](https://github.com/SoufianeMouajjeh)**
 
-  📬 mail here: [khalilelam16@gmail.com](mailto:khalilelam16@gmail.com)
+  📬 mail here: [soufianebusiness1704@gmail.com](mailto:soufianebusiness1704@gmail.com)
 
 - **[El Amraoui Khalil](https://github.com/khalilelamraoui)**
 
