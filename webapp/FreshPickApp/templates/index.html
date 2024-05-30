@@ -71,52 +71,6 @@
                 {% endif %}
                 {% endfor %}
             </div>
-            <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 hidden" id="productModal">
-                <div class="bg-white rounded-lg p-6 max-w-lg w-full relative">
-                    <button class="absolute top-2 right-2 text-gray-600 hover:text-gray-900" onclick="closeModal()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    </button>
-                    <img id="productImage" src="" alt="Product Image" class="w-full h-48 object-contain rounded-t-lg">
-                    <h2 class="text-2xl font-bold mt-4 text-[#333333]" id="productName"></h2>
-                    <p class="text-gray-600 mt-2 text-[#333333]" id="productDescription"></p>
-                    <p class="text-xl font-semibold text-green-700 mt-4" id="productPrice"></p>
-                    
-                    <form id="addToCartForm" method="post" action="{% url 'add_to_cart' %}" class="mt-6">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" id="productId">
-                        <div class="inline-flex items-center gap-2">
-                            <label for="quantity" class="block text-lg text-gray-700 font-semibold">Quantity:</label>
-                            <input type="number" name="quantity" id="quantity" min="1" max="5" value="1" class="mt-1 text-lg font-semibold block border border-[#333333] p-2 w-16 h-10 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"> 
-                            <h1 class="italic text-red-600 ">The Maximum is 5KGs</h1>
-                            {% if messages %}
-                                <div>
-                                    {% if error_message %}
-                                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                                            <span class="block sm:inline">{{ error_message }}</span>
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <button type="submit" class="w-full bg-green-700 text-white font-semibold py-2 px-4 rounded mt-4 hover:bg-green-700 transition-all duration-300">Add to Cart</button>
-                    </form>
-                </div>
-            </div>
-            
-            <script>
-                function openModal(id, name, price, description, image) {
-                    document.getElementById('productId').value = id;
-                    document.getElementById('productName').innerText = name;
-                    document.getElementById('productPrice').innerText = '$' + price;
-                    document.getElementById('productDescription').innerText = description;
-                    document.getElementById('productImage').src = image;
-                    document.getElementById('productModal').classList.remove('hidden');
-                }
-                
-                function closeModal() {
-                    document.getElementById('productModal').classList.add('hidden');
-                }
-            </script>
             <script>
                 // Function to generate random color between two hex colors
                 // Function to generate random color between two hex colors
@@ -152,6 +106,51 @@
                 
             </script>
         </div>
+    </div>
+    <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 hidden" id="productModal">
+        <div class="bg-white rounded-lg p-6 max-w-lg w-full relative">
+            <button class="absolute top-2 right-2 text-gray-600 hover:text-gray-900" onclick="closeModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <img id="productImage" src="" alt="Product Image" class="w-full h-48 object-contain rounded-t-lg">
+            <h2 class="text-2xl font-bold mt-4 text-[#333333]" id="productName"></h2>
+            <p class="text-gray-600 mt-2 text-[#333333]" id="productDescription"></p>
+            <p class="text-xl font-semibold text-green-700 mt-4" id="productPrice"></p>
+            
+            <form id="addToCartForm" method="post" action="{% url 'add_to_cart' %}" class="mt-6">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" id="productId">
+                <div class="inline-flex items-center gap-2">
+                    <label for="quantity" class="block text-lg text-gray-700 font-semibold">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" min="1" max="5" value="1" class="mt-1 text-lg font-semibold block border border-[#333333] p-2 w-16 h-10 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"> 
+                    <h1 class="italic text-red-600 ">The Maximum is 5KGs</h1>
+                    {% if messages %}
+                        <div>
+                            {% if error_message %}
+                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                    <span class="block sm:inline">{{ error_message }}</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+                <button type="submit" class="w-full bg-green-700 text-white font-semibold py-2 px-4 rounded mt-4 hover:bg-green-700 transition-all duration-300">Add to Cart</button>
+            </form>
+        </div>
+        <script>
+            function openModal(id, name, price, description, image) {
+                document.getElementById('productId').value = id;
+                document.getElementById('productName').innerText = name;
+                document.getElementById('productPrice').innerText = '$' + price;
+                document.getElementById('productDescription').innerText = description;
+                document.getElementById('productImage').src = image;
+                document.getElementById('productModal').classList.remove('hidden');
+            }
+            
+            function closeModal() {
+                document.getElementById('productModal').classList.add('hidden');
+            }
+        </script>
     </div>
     <div class="bg-gradient-to-b from-green-50 to-green-100">
         <section class="py-10 bg-green-700/[.1] sm:py-16 lg:py-24 mt-5">
