@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import dj_database_url
 from decouple import config
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +28,6 @@ SECRET_KEY = 'django-insecure-*96gz5yi3r$z3@0(zv)$_$pvbp$b3(&+%my-wvz6suu4n#6@y6
 DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app', '*']
-
 
 # Application definition
 
@@ -83,17 +83,23 @@ WSGI_APPLICATION = 'FreshPickProject.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'SqXPQbEHKZdcDJxZexZDEWHIljcNrWmH',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '35528',
+DATABASE_URL = os.getenv('DATABASE_URL')
+
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.config(default=DATABASE_URL)
     }
-}
-DATABASES['default'] = dj_database_url.config()
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'railway',
+            'USER': 'postgres',
+            'PASSWORD': 'SqXPQbEHKZdcDJxZexZDEWHIljcNrWmH',
+            'HOST': 'roundhouse.proxy.rlwy.net',
+            'PORT': '35528',
+        }
+    }
 
 # DATABASES = {
 #     'default': {
