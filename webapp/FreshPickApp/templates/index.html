@@ -39,7 +39,7 @@
     </div>
     <div class="container mx-auto py-8">
         <div class="flex items-center lg:gap-4 mt-8 !flex-wrap justify-center">
-            {% for product in products %}
+            {% for product in products|slice:":10" %}
             {% if product.quantity_available > 0 %}
             <div class="card w-1/2 md:w-1/3 lg:w-1/6 p-1 rounded-lg shadow-lg px-4 py-6 hover:shadow-2xl transition-all duration-300">
                 <div class="card-img mx-auto text-center relative">
@@ -67,6 +67,40 @@
                     <h1 class="text-red-600 font-semibold text-lg">${{ product.price }}</h1>
                 </div> -->
             </div>
+            <script>
+                // Function to generate random color between two hex colors
+                // Function to generate random color between two hex colors
+                function randomColor() {
+                    var goldenColor = "#FFD700";
+                    var b9c3cc = "#b9c3cc";
+                    var colors = [goldenColor, b9c3cc];
+                    return colors[Math.floor(Math.random() * colors.length)];
+                }
+        
+                // Select last three SVG elements
+                var svgs = document.querySelectorAll('svg.lucide-star:nth-last-child(-n+3)');
+        
+                // Loop through each SVG and set random fill color
+                svgs.forEach(function(svg) {
+                    svg.style.fill = randomColor();
+                    svg.style.stroke = svg.style.fill;
+                });
+        
+                // Set first two SVG elements to gold color
+                var firstTwoSvgs = document.querySelectorAll('svg.lucide-star:nth-child(-n+3)');
+                firstTwoSvgs.forEach(function(svg) {
+                    svg.style.fill = "#FFD700";
+                    svg.style.stroke = svg.style.fill;
+                });
+        
+                // Set the remaining SVG elements to gray color
+                var remainingSvgs = document.querySelectorAll('svg.lucide-star:nth-child(n+5)');
+                remainingSvgs.forEach(function(svg) {
+                    svg.style.fill = "#b9c3cc";
+                    svg.style.stroke = svg.style.fill;
+                });
+                
+            </script>
             {% endif %}
             {% endfor %}
         </div>
