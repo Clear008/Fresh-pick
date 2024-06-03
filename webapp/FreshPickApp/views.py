@@ -133,7 +133,6 @@ def cart_items(request):
     total_price = sum([cart_item.price_total for cart_item in cart_items])
     return render(request, 'cart_items.html', {'cart_items': cart_items, 'total_price': total_price})
 
-
 @login_required
 def remove_from_cart(request, cart_item_id):
     if request.method == 'POST':
@@ -155,10 +154,8 @@ def checkout(request):
             if not cart_items.exists():
                 messages.error(request, "Your cart is empty.")
                 return redirect('cart_items')
-
             # Create Order
             order = Order.objects.create(user=request.user, payment_method=request.POST.get('payment_method', 'Credit Card'))
-            
             # Create Order Items from Cart Items
             for item in cart_items:
                 OrderItem.objects.create(
@@ -168,16 +165,13 @@ def checkout(request):
                 )
                 item.product.quantity_available -= item.quantity
                 item.product.save()
-            
             # Clear the cart
             cart_items.delete()
             messages.success(request, "Order placed successfully!")
             return redirect('order_summary', order_id=order.id)
-
         except Exception as e:
             messages.error(request, f"Error during checkout: {str(e)}")
             return redirect('cart_items')
-
     return JsonResponse({'error': 'Invalid request'}, status=400)
     
 @login_required

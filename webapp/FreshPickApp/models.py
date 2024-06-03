@@ -34,8 +34,8 @@ class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)  # Store individual item price
-    price_total = models.DecimalField(max_digits=8, decimal_places=2, default=0)  # Store total price of items
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    price_total = models.DecimalField(max_digits=8, decimal_places=2, default=0)
 
     def __str__(self):
         return f"{self.quantity} of {self.product.name} in {self.cart}"
