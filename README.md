@@ -1,6 +1,6 @@
 # FreshPick
 
-![FreshPick Logo](webapp/FreshPickApp/static/imgs/freshpick.png)
+![FreshPick Home](webapp/FreshPickApp/static/imgs/screenshot.png)
 
 ## Introduction
 
@@ -9,9 +9,9 @@ FreshPick is a web application designed to simplify the process of ordering fres
 - **Deployed Site**: [FreshPick](https://fresh-pick.vercel.app/)
 - **Final Project Blog Article**: [FreshPick Blog Post](https://medium.com/@yourusername/freshpick-webapp-overview)
 - **Author(s) LinkedIn**:
-  - [Author 1](https://www.linkedin.com/in/khalil-el-amraoui-5834a9216/) El Amraoui Khalil
-  - [Author 2](https://www.linkedin.com/in/soufiane-elmouajjeh-052929280/) El Mouajjeh Soufiane
-  - [Author 3](https://linkedin.com/in/author2) Leknouch Wissal
+  - Author 1 : [El Amraoui Khalil](https://www.linkedin.com/in/khalil-el-amraoui-5834a9216/)
+  - Author 2 : [El Mouajjeh Soufiane](https://www.linkedin.com/in/soufiane-elmouajjeh-052929280/)
+  - Author 3 : [Leknouch Wissal](https://linkedin.com/in/author2)
 
 ## Installation
 
@@ -99,6 +99,4 @@ We welcome contributions to the FreshPick project. To contribute, please follow 
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Screenshot
-
-![FreshPick Home](webapp/FreshPickApp/static/imgs/screenshot.png)
+![FreshPick Logo](webapp/FreshPickApp/static/imgs/freshpick.png)
