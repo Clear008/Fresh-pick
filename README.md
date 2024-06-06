@@ -101,4 +101,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Screenshot
 
-![FreshPick Home](static/imgs/screenshot.png)
+![FreshPick Home](webapp/FreshPickApp/static/imgs/screenshot.png)
