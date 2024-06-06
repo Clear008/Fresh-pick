@@ -9,9 +9,9 @@ FreshPick is a web application designed to simplify the process of ordering fres
 - **Deployed Site**: [FreshPick](https://fresh-pick.vercel.app/)
 - **Final Project Blog Article**: [FreshPick Blog Post](https://medium.com/@yourusername/freshpick-webapp-overview)
 - **Author(s) LinkedIn**:
-  - [Author 1](https://www.linkedin.com/in/khalil-el-amraoui-5834a9216/)
-  - [Author 2](https://www.linkedin.com/in/soufiane-elmouajjeh-052929280/)
-  - [Author 3](https://linkedin.com/in/author2)
+  - [Author 1](https://www.linkedin.com/in/khalil-el-amraoui-5834a9216/) El Amraoui Khalil
+  - [Author 2](https://www.linkedin.com/in/soufiane-elmouajjeh-052929280/) El Mouajjeh Soufiane
+  - [Author 3](https://linkedin.com/in/author2) Leknouch Wissal
 
 ## Installation
 
